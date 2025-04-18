@@ -75,4 +75,18 @@ while tries > 0:
     print(stages[tries])
 current_state = ''.join([letter if letter in guessed_letters else '_' for letter in word_to_guess])
 print("Слово: ", current_state)
-
+ if '_' not in current_state:
+        print("Поздравляем! Вы угадали слово!")
+        break
+ guess = input("Введите букву: ").lower()
+   if guess in guessed_letters:
+        print("Вы уже угадали эту букву.")
+        continue
+ guessed_letters.append(guess)
+ if guess not in word_to_guess:
+        tries -= 1
+        print(f"Неправильно! У вас осталось {tries} попыток.")
+    
+if tries == 0:
+    print(stages[tries])
+    print(f"Вы проиграли! Загаданное слово было: {word_to_guess}")
